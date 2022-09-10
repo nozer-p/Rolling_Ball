@@ -21,7 +21,7 @@ public class SwipeDetection : MonoBehaviour
 
     private void Start()
     {
-        //Time.timeScale = 0.1f;
+        //Time.timeScale = 0.3f;
         ball = FindObjectOfType<Player>();
         isMobile = Application.isMobilePlatform;
     }

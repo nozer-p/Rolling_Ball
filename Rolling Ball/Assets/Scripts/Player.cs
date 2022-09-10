@@ -36,6 +36,6 @@ public class Player : MonoBehaviour
 
     public void Rebound()
     {
-        direction = new Vector3(-direction.x, direction.y, direction.z);
+        direction = Vector3.Reflect(direction, Vector3.left);
     }
 }

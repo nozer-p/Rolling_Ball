@@ -4,38 +4,56 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private LayerMask collisionMask;
     [SerializeField] private float mass;
-    private float delta;
-    private Vector3 direction;
-
-    private void Start()
-    {
-        
-    }
+    [SerializeField] private float offset;
+    [SerializeField] private float kef;
+    [SerializeField] private float force;
+    [SerializeField] private float forceFriction;
+    private float g = 9.81f;
 
     private void FixedUpdate()
     {
         Move();
+        Ray();
     }
 
     public void Move()
     {
-        transform.Translate(direction * delta * Time.deltaTime);
+        transform.Translate(Vector3.forward * force * Time.deltaTime);
+        
+        if (force > 0)
+        {
+            forceFriction = kef * mass * g;
+            force -= forceFriction;
+        }
+        else
+        {
+            force = 0f;
+        }
     }
 
     public void ChangeDelta(float delta)
     {
-        this.delta = delta;
+        force = delta;
     }
 
     public void ChangeDirection(Vector3 direction)
     {
-        direction = direction.normalized;
-        this.direction = new Vector3(-direction.x, direction.z, -direction.y);
+        float angle = Mathf.Atan2(direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, angle + 90f, 0f);
     }
 
-    public void Rebound()
+    private void Ray()
     {
-        direction = Vector3.Reflect(direction, Vector3.left);
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Time.deltaTime * force + offset, collisionMask))
+        {
+            Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
+            float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(0f, rot, 0f);
+        }
     }
 }

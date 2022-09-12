@@ -16,6 +16,7 @@ public class SwipeDetection : MonoBehaviour
     private Player ball;
     [SerializeField] private LineRenderer line;
     [SerializeField] private float offsetLine;
+    [SerializeField] private float offsetDelta;
     [SerializeField] private float lineOnY;
     [SerializeField] private float offset;
 
@@ -71,7 +72,7 @@ public class SwipeDetection : MonoBehaviour
             direction = direction.normalized * maxDeadZone;
         }
 
-        delta = direction.magnitude / offsetLine;
+        delta = direction.magnitude / offsetDelta;
 
         line.SetPosition(0, new Vector3(ball.gameObject.transform.position.x, lineOnY, ball.gameObject.transform.position.z));
         line.SetPosition(1, new Vector3(ball.gameObject.transform.position.x - direction.x / offsetLine, lineOnY, ball.gameObject.transform.position.z - direction.y / offsetLine));

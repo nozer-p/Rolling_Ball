@@ -5,11 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private LayerMask collisionMask;
+    [SerializeField] private GameObject prefabSmoke;
+
+    [SerializeField] private GameObject skin;
+
     [SerializeField] private float mass;
     [SerializeField] private float offset;
     [SerializeField] private float kef;
-    [SerializeField] private float force;
-    [SerializeField] private float forceFriction;
+    private float force;
+    private float forceFriction;
     private float g = 9.81f;
 
     private void FixedUpdate()
@@ -21,6 +25,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         transform.Translate(Vector3.forward * force * Time.deltaTime);
+        skin.transform.Rotate(force, 0f, 0f);
         
         if (force > 0)
         {
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour
             Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
             float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0f, rot, 0f);
+            Instantiate(prefabSmoke, transform.position, Quaternion.Euler(0f, hit.transform.eulerAngles.y + 90, 0f));
         }
     }
 }

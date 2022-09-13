@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private float forceFriction;
     private float g = 9.81f;
 
+    [SerializeField] private float minForce;
     [SerializeField] private Material red;
     [SerializeField] private Material def;
     private float timeBtwGoals;
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour
             //float rotZ = 1 - rot;
             //transform.localScale = new Vector3(rotZ * 2, transform.localScale.y, rotX * 2);
             
-            timeBtwGoals = startTimeBtwGoals;
+            if (force >= minForce) timeBtwGoals = startTimeBtwGoals;
             
             Instantiate(prefabSmoke, transform.position, Quaternion.Euler(0f, hit.transform.eulerAngles.y + 90, 0f));
         }

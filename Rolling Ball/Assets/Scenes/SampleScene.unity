@@ -506,6 +506,7 @@ MonoBehaviour:
   mass: 0.15
   offset: 0.1
   kef: 0.05
+  minForce: 5
   red: {fileID: 2100000, guid: 692530948a92f364caba30c69c77362e, type: 2}
   def: {fileID: 2100000, guid: 000c2942615b861499a7815b81b5b274, type: 2}
   startTimeBtwGoals: 0.5
@@ -537,7 +538,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179434121}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 2.88, y: 1, z: -1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -546,7 +547,7 @@ Transform:
   - {fileID: 796810195}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1 &223879214
 GameObject:
   m_ObjectHideFlags: 0

@@ -155,7 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 179434126}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &41942546
 BoxCollider:
@@ -506,6 +506,9 @@ MonoBehaviour:
   mass: 0.15
   offset: 0.1
   kef: 0.05
+  red: {fileID: 2100000, guid: 692530948a92f364caba30c69c77362e, type: 2}
+  def: {fileID: 2100000, guid: 000c2942615b861499a7815b81b5b274, type: 2}
+  startTimeBtwGoals: 0.5
 --- !u!135 &179434123
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -535,12 +538,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179434121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9, y: 1, z: 0}
+  m_LocalPosition: {x: 2.88, y: 1, z: -1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 796810195}
   - {fileID: 41942545}
+  - {fileID: 796810195}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1139,7 +1142,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8602755, g: 1, b: 0.107547104, a: 1}
+  m_Color: {r: 0.96782523, g: 1, b: 0.7962264, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1244,6 +1247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 000c2942615b861499a7815b81b5b274, type: 2}
   - {fileID: 2100000, guid: 22c36600c5272ce448ed97f282747937, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1288,7 +1292,7 @@ Transform:
   m_Children:
   - {fileID: 1658315396}
   m_Father: {fileID: 179434126}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &796810196
 MonoBehaviour:
